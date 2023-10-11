@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription, map, startWith } from 'rxjs';
+import { getCities } from 'src/app/data/cities';
+import { City } from 'src/app/models/city.model';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ import { Observable, Subscription, map, startWith } from 'rxjs';
 export class HomeComponent implements OnInit, OnDestroy {
 
   formChanges$: Subscription | undefined;
-  options: string[] = ['One', 'Two', 'Three'];
+  cities: string[] = getCities().map((city: City) => city.name);
   filteredOptions: Observable<string[]> | undefined;
 
   flightForm: FormGroup = new FormGroup({
@@ -67,6 +69,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.cities.filter(option => option.toLowerCase().includes(filterValue));
   }
 }
