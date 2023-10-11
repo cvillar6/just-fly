@@ -16,6 +16,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FlightListComponent } from './components/flight-list/flight-list.component';
+import { FlightComponent } from './components/flight/flight.component';
 
 
 
@@ -24,7 +26,9 @@ import { HeaderComponent } from './components/header/header.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FlightListComponent,
+    FlightComponent
   ],
   imports: [
     BrowserModule,

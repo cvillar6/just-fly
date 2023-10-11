@@ -1,0 +1,44 @@
+@import '../../../assets/styles/variables.scss';
+
+.flight-container {
+    padding: 10px;
+    border-radius: 10px;
+    // background-color: $primaryColor;
+    box-shadow: 0px 0px 20px 0px rgba(101,194,245,1);
+
+    .flight-information {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            margin: 0;
+        }
+
+        .flight-data {
+            text-align: center;
+
+            .label {
+                font-size: 14px;
+                font-weight: bold;
+            }
+        }
+
+        .flight-data-container {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .flight-information-actions {
+        display: flex;
+        justify-content: center;
+
+        button {
+            background-color: $accentColor;
+            color: white;
+        }
+
+    }
+}

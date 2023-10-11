@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, Subscription, map, startWith } from 'rxjs';
 import { getCities } from 'src/app/data/cities';
 import { City } from 'src/app/models/city.model';
+import { Flight } from 'src/app/models/flight.model';
+import { FlightService } from 'src/app/services/flight.service';
 
 @Component({
   selector: 'app-home',
@@ -19,15 +22,23 @@ export class HomeComponent implements OnInit, OnDestroy {
     rt: new FormControl(true),
     origin: new FormControl('', Validators.required),
     destination: new FormControl('', Validators.required),
-    startDate: new FormControl({ value: '', disabled: true }, Validators.required),
-    startDateRange: new FormControl('', Validators.required),
-    endDateRange: new FormControl('', Validators.required),
-    passengers: new FormControl('', Validators.required),
+    departureDate: new FormControl({ value: '', disabled: true }, Validators.required),
+    departureDateRange: new FormControl('', Validators.required),
+    returnDateRange: new FormControl('', Validators.required),
+    adultPassegers: new FormControl('', Validators.required),
+    childPassegers: new FormControl(''),
+    babyPassengers: new FormControl(''),
   });
+
+  constructor(
+    private router: Router,
+    private flightService: FlightService
+  ) { }
 
   ngOnInit(): void {
     this.rtChanged();
-    this.originChanged();
+    this.cityChanged('origin');
+    this.cityChanged('destination');
   }
 
   ngOnDestroy(): void {
@@ -42,28 +53,36 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.formChanges$ = this.getControl('rt').valueChanges.subscribe(
       (rtValue: boolean) => {
         if (rtValue) {
-          this.getControl('startDate').disable();
-          this.getControl('destination').enable();
-          this.getControl('startDateRange').enable();
-          this.getControl('endDateRange').enable();
+          this.getControl('departureDate').disable();
+          this.getControl('departureDateRange').enable();
+          this.getControl('returnDateRange').enable();
         } else {
-          this.getControl('startDate').enable();
-          this.getControl('destination').disable();
-          this.getControl('startDateRange').disable();
-          this.getControl('endDateRange').disable();
+          this.getControl('departureDate').enable();
+          this.getControl('departureDateRange').disable();
+          this.getControl('returnDateRange').disable();
         }
       });
   }
 
-  originChanged(): void {
-    this.filteredOptions = this.getControl('origin').valueChanges.pipe(
+  cityChanged(controlCityName: string): void {
+    this.filteredOptions = this.getControl(controlCityName).valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
     );
   }
 
   onSubmit(): void {
-    console.log(this.flightForm);
+    const flight: Flight = {
+      origin: this.flightForm.value.origin,
+      destination: this.flightForm.value.destination,
+      rt: this.flightForm.value.rt,
+      departureDate: this.flightForm.value.departureDate || this.flightForm.value.departureDateRange,
+      returnDate: this.flightForm.value.returnDateRange
+    }
+
+    sessionStorage.setItem('flights', JSON.stringify(this.flightService.findFlight(flight)));
+
+    this.router.navigate(['flights']);
   }
 
   private _filter(value: string): string[] {
