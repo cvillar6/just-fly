@@ -1,0 +1,87 @@
+<div class="home-container container">
+
+    <div class="form-container">
+        <form class="form" [formGroup]="flightForm" (ngSubmit)="onSubmit()">
+
+            <mat-checkbox class="form-control" formControlName="rt">
+                Ida y regreso
+            </mat-checkbox>
+
+            <mat-form-field class="form-control">
+                <mat-label>Ciudad de origen</mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="origin"
+                    [matAutocomplete]="autoOrigin">
+                <mat-autocomplete autoActiveFirstOption #autoOrigin="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field class="form-control">
+                <mat-label>Ciudad de destino</mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="destination"
+                    [matAutocomplete]="autoDestination">
+                <mat-autocomplete autoActiveFirstOption #autoDestination="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field class="form-control" *ngIf="getControl('rt').value; else ow">
+                <mat-label>Fecha de ida y de regreso</mat-label>
+                <mat-date-range-input [rangePicker]="rangePicker">
+                    <input matStartDate formControlName="startDateRange" placeholder="Fecha de ida">
+                    <input matEndDate formControlName="endDateRange" placeholder="Fecha de regreso">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                <mat-date-range-picker #rangePicker></mat-date-range-picker>
+
+            </mat-form-field>
+
+            <ng-template #ow>
+                <mat-form-field class="form-control">
+                    <mat-label>Fecha de ida</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="startDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </ng-template>
+
+            <mat-accordion class="form-control passengers" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Cantidad de viajeros
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            0
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field class="form-control">
+                        <mat-label>Adultos</mat-label>
+                        <input matInput formControlName="passengers" type="number" min="1">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-control">
+                        <mat-label>Niños</mat-label>
+                        <input matInput type="number">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-control">
+                        <mat-label>Bebés</mat-label>
+                        <input matInput type="number">
+                    </mat-form-field>
+
+                </mat-expansion-panel>
+
+            </mat-accordion>
+
+            <button type="submit" [disabled]="!flightForm.valid" mat-raised-button>Volemos</button>
+
+        </form>
+    </div>
+
+</div>
