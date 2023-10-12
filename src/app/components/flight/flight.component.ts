@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Flight } from 'src/app/models/flight.model';
+import { FlightService } from 'src/app/services/flight.service';
 
 @Component({
   selector: 'app-flight',
@@ -8,4 +10,18 @@ import { Flight } from 'src/app/models/flight.model';
 })
 export class FlightComponent {
   @Input() flight?: Flight;
+  @Output() showReturnFlights: EventEmitter<Flight> = new EventEmitter<Flight>();
+
+  constructor(
+    private flightService: FlightService,
+    private router: Router
+  ) { }
+
+  checkFlight(selectedFlight?: Flight): void {
+    if (selectedFlight) {
+      selectedFlight.rt ?
+        this.showReturnFlights.emit(selectedFlight) :
+        this.router.navigate(['home']);
+    }
+  }
 }

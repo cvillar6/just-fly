@@ -1,6 +1,6 @@
 <div class="home-container container">
 
-    <div class="form-container">
+    <div *ngIf="!isLoading; else loading" class="form-container">
         <form class="form" [formGroup]="flightForm" (ngSubmit)="onSubmit()">
 
             <mat-checkbox class="form-control" formControlName="rt">
@@ -9,7 +9,7 @@
 
             <mat-form-field class="form-control">
                 <mat-label>Ciudad de origen</mat-label>
-                <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="origin"
+                <input type="text" placeholder="Selecciona el origen" matInput formControlName="origin"
                     [matAutocomplete]="autoOrigin">
                 <mat-autocomplete autoActiveFirstOption #autoOrigin="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -20,7 +20,7 @@
 
             <mat-form-field class="form-control">
                 <mat-label>Ciudad de destino</mat-label>
-                <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="destination"
+                <input type="text" placeholder="Selecciona el destino" matInput formControlName="destination"
                     [matAutocomplete]="autoDestination">
                 <mat-autocomplete autoActiveFirstOption #autoDestination="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -83,5 +83,9 @@
 
         </form>
     </div>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
 
 </div>

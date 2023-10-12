@@ -18,8 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FlightListComponent } from './components/flight-list/flight-list.component';
 import { FlightComponent } from './components/flight/flight.component';
-
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,8 @@ import { FlightComponent } from './components/flight/flight.component';
     MatExpansionModule,
     MatIconModule,
     MatButtonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   providers: [MatNativeDateModule],
   bootstrap: [AppComponent]

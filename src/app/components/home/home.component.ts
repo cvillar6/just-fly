@@ -15,8 +15,11 @@ import { FlightService } from 'src/app/services/flight.service';
 export class HomeComponent implements OnInit, OnDestroy {
 
   formChanges$: Subscription | undefined;
+
   cities: string[] = getCities().map((city: City) => city.name);
   filteredOptions: Observable<string[]> | undefined;
+
+  isLoading: boolean = false;
 
   flightForm: FormGroup = new FormGroup({
     rt: new FormControl(true),

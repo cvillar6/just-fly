@@ -2,7 +2,7 @@
     <div class="flight-list-inner">
         <ul *ngIf="flights.length > 0; else emptyFlights" class="flight-list">
             <li *ngFor="let flight of flights" class="flight-item">
-                <app-flight [flight]="flight"></app-flight>
+                <app-flight [flight]="flight" (showReturnFlights)="updateFlights($event)"></app-flight>
             </li>
         </ul>
         <ng-template #emptyFlights>
