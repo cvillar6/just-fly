@@ -1,0 +1,35 @@
+@import '../../../assets/styles/variables.scss';
+
+.user-information-container {
+    .form-container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: $lightPrimaryColor;
+
+        .form {
+            display: flex;
+            flex-direction: column;
+
+            .form-control {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            button {
+                width: 100%;
+                margin-top: 40px;
+                padding: 20px;
+                background-color: $accentColor;
+                color: white;
+                font-size: 18px;
+
+                &:disabled {
+                    background-color: $disabled;
+                }
+            }
+        }
+
+    }
+}

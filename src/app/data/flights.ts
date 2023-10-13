@@ -8,7 +8,7 @@ export const getFlights = (): Flight[] => {
             rt: false,
             departureDate: new Date(2023, 9, 12),
             departureHour: new Date(2023, 9, 12, 10),
-            duration: 1,
+            duration: '1:00 h',
             arrivalHour: new Date(2023, 9, 12, 11),
             direct: true,
             price: 100000
@@ -21,7 +21,7 @@ export const getFlights = (): Flight[] => {
             returnDate: new Date(2023, 9, 20),
             departureHour: new Date(2023, 9, 12, 12),
             returnHour: new Date(2023, 9, 20, 10),
-            duration: 1,
+            duration: '1:00 h',
             arrivalHour: new Date(2023, 9, 12, 13),
             direct: true,
             price: 100000
@@ -34,7 +34,7 @@ export const getFlights = (): Flight[] => {
             returnDate: new Date(2023, 9, 20),
             departureHour: new Date(2023, 9, 12, 14),
             returnHour: new Date(2023, 9, 20, 10),
-            duration: 1,
+            duration: '1:00 h',
             arrivalHour: new Date(2023, 9, 12, 15),
             direct: false,
             price: 100000
@@ -47,7 +47,7 @@ export const getFlights = (): Flight[] => {
             returnDate: new Date(2023, 9, 20),
             departureHour: new Date(2023, 9, 12, 20),
             returnHour: new Date(2023, 9, 20, 10),
-            duration: 1,
+            duration: '1:00 h',
             arrivalHour: new Date(2023, 9, 12, 21),
             direct: true,
             price: 100000
@@ -60,7 +60,7 @@ export const getFlights = (): Flight[] => {
             returnDate: new Date(2023, 9, 20),
             departureHour: new Date(2023, 9, 12, 22),
             returnHour: new Date(2023, 9, 20, 10),
-            duration: 1,
+            duration: '1:00 h',
             arrivalHour: new Date(2023, 9, 12, 23),
             direct: true,
             price: 100000
@@ -73,7 +73,7 @@ export const getFlights = (): Flight[] => {
             returnDate: new Date(2023, 9, 20),
             departureHour: new Date(2023, 9, 12, 10),
             returnHour: new Date(2023, 9, 20, 10),
-            duration: 1,
+            duration: '1:00 h',
             arrivalHour: new Date(2023, 9, 12, 11),
             direct: false,
             price: 100000

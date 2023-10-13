@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription, map, startWith } from 'rxjs';
 import { getCities } from 'src/app/data/cities';
+import { getFlights } from 'src/app/data/flights';
 import { City } from 'src/app/models/city.model';
 import { Flight } from 'src/app/models/flight.model';
 import { FlightService } from 'src/app/services/flight.service';
@@ -83,9 +84,19 @@ export class HomeComponent implements OnInit, OnDestroy {
       returnDate: this.flightForm.value.returnDateRange
     }
 
-    sessionStorage.setItem('flights', JSON.stringify(this.flightService.findFlight(flight)));
+    const passengers: number =
+      this.flightForm.value.adultPassegers +
+      this.flightForm.value.childPassegers +
+      this.flightForm.value.babyPassengers;
 
-    this.router.navigate(['flights']);
+    sessionStorage.setItem('flights', JSON.stringify(this.flightService.findFlight(flight, getFlights())));
+    sessionStorage.setItem('passengers', passengers.toString());
+
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.router.navigate(['flights']);
+    }, 3000);
   }
 
   private _filter(value: string): string[] {

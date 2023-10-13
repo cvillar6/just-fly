@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FlightListComponent } from './components/flight-list/flight-list.component';
 import { FlightComponent } from './components/flight/flight.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserInformationComponent } from './components/user-information/user-information.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HeaderComponent,
     FooterComponent,
     FlightListComponent,
-    FlightComponent
+    FlightComponent,
+    UserInformationComponent
   ],
   imports: [
     BrowserModule,

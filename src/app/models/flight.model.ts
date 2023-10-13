@@ -6,7 +6,7 @@ export interface Flight {
     returnDate?: Date,
     departureHour?: Date,
     returnHour?: Date,
-    duration?: number,
+    duration?: string,
     arrivalHour?: Date,
     direct?: boolean,
     price?: number

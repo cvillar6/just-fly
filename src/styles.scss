@@ -12,6 +12,10 @@ body {
     background-color: $primaryColor;
 }
 
+mat-spinner.mat-mdc-progress-spinner {
+    margin: 0 auto;
+}
+
 .container {
     margin: 0 auto;
     padding: 0 6px;

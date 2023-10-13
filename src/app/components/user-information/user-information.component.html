@@ -1,0 +1,41 @@
+<div class="user-information-container container">
+    <div class="form-container">
+        <form class="form" [formGroup]="userForm">
+
+            <mat-form-field class="form-control" *ngFor="let x of passengerFormControl">
+                <mat-label>{{x}}</mat-label>
+                <input matInput formControlName="{{x}}" placeholder="Nombre">
+            </mat-form-field>
+
+
+            <!-- </mat-form-field> -->
+
+            <!-- <mat-form-field class="form-control">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Nombre">
+            </mat-form-field>
+            <mat-form-field class="form-control">
+                <mat-label>Apellido</mat-label>
+                <input matInput placeholder="Apellido">
+            </mat-form-field>
+            <mat-form-field class="form-control">
+                <mat-label>Teléfono</mat-label>
+                <input matInput placeholder="Teléfono">
+            </mat-form-field>
+            <mat-form-field class="form-control">
+                <mat-label>Correo</mat-label>
+                <input matInput placeholder="Correo">
+            </mat-form-field>
+            <mat-form-field class="form-control">
+                <mat-label>Edad</mat-label>
+                <input matInput placeholder="Edad">
+            </mat-form-field> -->
+            <!-- <mat-form-field class="form-control">
+                <mat-label>Fecha vencimiento VISA</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+        </form>
+    </div>
+</div>

@@ -23,7 +23,7 @@
         <div class="flight-data-container">
             <div class="flight-data">
                 <p class="label">Tiempo de vuelo</p>
-                <p class="value">{{flight?.duration | number}}</p>
+                <p class="value">{{flight?.duration}}</p>
             </div>
             <div class="flight-data">
                 <p class="value">{{flight?.direct ? 'Directo' : 'Con escala'}}</p>
@@ -42,7 +42,7 @@
     </div>
     <div class="flight-information-actions">
         <button (click)="checkFlight(flight)" type="button" mat-raised-button>
-            LO QUIERO
+            Quiero este
         </button>
     </div>
 </div>
