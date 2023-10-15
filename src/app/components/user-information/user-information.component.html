@@ -1,41 +1,22 @@
 <div class="user-information-container container">
-    <div class="form-container">
-        <form class="form" [formGroup]="userForm">
+    <div *ngIf="!isLoading; else loading" class="form-container">
+        <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div *ngFor="let passenger of passengerList; let i = index">
+                <p *ngIf="i % 6 === 0">
+                    Pasajero
+                </p>
 
-            <mat-form-field class="form-control" *ngFor="let x of passengerFormControl">
-                <mat-label>{{x}}</mat-label>
-                <input matInput formControlName="{{x}}" placeholder="Nombre">
-            </mat-form-field>
+                <mat-form-field class="form-control">
+                    <mat-label>{{passenger.description}}</mat-label>
+                    <input matInput [formControlName]="passenger.formControlName" [placeholder]="passenger.description">
+                </mat-form-field>
+            </div>
 
-
-            <!-- </mat-form-field> -->
-
-            <!-- <mat-form-field class="form-control">
-                <mat-label>Nombre</mat-label>
-                <input matInput placeholder="Nombre">
-            </mat-form-field>
-            <mat-form-field class="form-control">
-                <mat-label>Apellido</mat-label>
-                <input matInput placeholder="Apellido">
-            </mat-form-field>
-            <mat-form-field class="form-control">
-                <mat-label>Teléfono</mat-label>
-                <input matInput placeholder="Teléfono">
-            </mat-form-field>
-            <mat-form-field class="form-control">
-                <mat-label>Correo</mat-label>
-                <input matInput placeholder="Correo">
-            </mat-form-field>
-            <mat-form-field class="form-control">
-                <mat-label>Edad</mat-label>
-                <input matInput placeholder="Edad">
-            </mat-form-field> -->
-            <!-- <mat-form-field class="form-control">
-                <mat-label>Fecha vencimiento VISA</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field> -->
+            <button type="submit" [disabled]="!userForm.valid" mat-raised-button>Volemos</button>
         </form>
     </div>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
 </div>

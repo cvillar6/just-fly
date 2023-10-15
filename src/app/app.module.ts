@@ -20,6 +20,8 @@ import { FlightListComponent } from './components/flight-list/flight-list.compon
 import { FlightComponent } from './components/flight/flight.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserInformationComponent } from './components/user-information/user-information.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UserInformationComponent } from './components/user-information/user-inf
     FooterComponent,
     FlightListComponent,
     FlightComponent,
-    UserInformationComponent
+    UserInformationComponent,
+    CheckoutComponent,
+    CreditCardComponent
   ],
   imports: [
     BrowserModule,

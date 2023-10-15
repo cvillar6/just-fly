@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="flight-information-actions">
-        <button (click)="checkFlight(flight)" type="button" mat-raised-button>
+        <button *ngIf="showButton" (click)="checkFlight(flight)" type="button" mat-raised-button>
             Quiero este
         </button>
     </div>

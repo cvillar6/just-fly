@@ -8,6 +8,7 @@ import { Flight } from 'src/app/models/flight.model';
 })
 export class FlightComponent {
   @Input() flight?: Flight;
+  @Input() showButton: boolean = true;
   @Output() showReturnFlights: EventEmitter<Flight> = new EventEmitter<Flight>();
 
   constructor() { }

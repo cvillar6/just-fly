@@ -1,0 +1,24 @@
+<div class="credit-card-container">
+    <mat-form-field class="form-control">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre">
+    </mat-form-field>
+    <mat-form-field class="form-control">
+        <mat-label>Número de tarjeta</mat-label>
+        <input matInput placeholder="Número de tarjeta">
+    </mat-form-field>
+    <div class="credit-card-back-container">
+        <mat-form-field class="form-control">
+            <mat-label>Fecha de vencimiento</mat-label>
+            <input matInput [matDatepicker]="dp">
+            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp startView="multi-year"
+                panelClass="example-month-picker">
+            </mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="form-control">
+            <mat-label>CVV</mat-label>
+            <input matInput placeholder="CVV">
+        </mat-form-field>
+    </div>
+</div>

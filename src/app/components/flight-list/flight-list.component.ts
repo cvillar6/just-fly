@@ -36,10 +36,15 @@ export class FlightListComponent implements OnInit {
           departureHour: $event.returnHour,
         };
 
+        sessionStorage.setItem('flight2', JSON.stringify($event));
+
         this.flights = this.flightService.findFlight(returnFlight, getReturnFlights());
-        
+
         this.isLoading = false;
       } else {
+
+        sessionStorage.setItem('flight1', JSON.stringify($event));
+
         this.router.navigate(['user']);
       }
     }, 3000);
