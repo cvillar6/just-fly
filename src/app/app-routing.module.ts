@@ -6,10 +6,11 @@ import { UserInformationComponent } from './components/user-information/user-inf
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
   { path: 'flights', component: FlightListComponent },
   { path: 'user', component: UserInformationComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: '', component: HomeComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({

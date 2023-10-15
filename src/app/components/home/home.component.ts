@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription, map, startWith } from 'rxjs';
 import { getCities } from 'src/app/data/cities';
-import { getFlights } from 'src/app/data/flights';
 import { City } from 'src/app/models/city.model';
 import { Flight } from 'src/app/models/flight.model';
 import { FlightService } from 'src/app/services/flight.service';
@@ -16,6 +15,7 @@ import { FlightService } from 'src/app/services/flight.service';
 export class HomeComponent implements OnInit, OnDestroy {
 
   formChanges$: Subscription | undefined;
+  flightData$: Subscription | undefined;
 
   cities: string[] = getCities().map((city: City) => city.name);
   filteredOptions: Observable<string[]> | undefined;
@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.formChanges$?.unsubscribe();
+    this.flightData$?.unsubscribe();
   }
 
   getControl(formControlName: string): FormControl {
@@ -70,12 +71,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   cityChanged(controlCityName: string): void {
     this.filteredOptions = this.getControl(controlCityName).valueChanges.pipe(
-      startWith(''),
+      startWith(undefined),
       map(value => this._filter(value || '')),
     );
   }
 
   onSubmit(): void {
+    this.isLoading = true;
+
     const flight: Flight = {
       origin: this.flightForm.value.origin,
       destination: this.flightForm.value.destination,
@@ -89,14 +92,23 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.flightForm.value.childPassegers +
       this.flightForm.value.babyPassengers;
 
-    sessionStorage.setItem('flights', JSON.stringify(this.flightService.findFlight(flight, getFlights())));
-    sessionStorage.setItem('passengers', passengers.toString());
+    this.flightData$ = this.flightService.getFlights().pipe(
+      map((flightData: {
+        flightData: Flight[]
+      }) =>
+        flightData.flightData.map(
+          (flight: Flight) => {
+            return {
+              ...flight,
+              departureDate: new Date(flight.departureDate),
+              returnDate: flight.returnDate ? new Date(flight.returnDate) : undefined
+            }
+          }))).subscribe((flightData: Flight[]) => {
+            sessionStorage.setItem('flights', JSON.stringify(this.flightService.findFlight(flight, flightData)));
+            sessionStorage.setItem('passengers', passengers.toString());
 
-    this.isLoading = true;
-
-    setTimeout(() => {
-      this.router.navigate(['flights']);
-    }, 3000);
+            this.router.navigate(['flights']);
+          });
   }
 
   private _filter(value: string): string[] {

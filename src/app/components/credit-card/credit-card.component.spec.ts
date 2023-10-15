@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreditCardComponent } from './credit-card.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 describe('CreditCardComponent', () => {
   let component: CreditCardComponent;
@@ -8,7 +11,9 @@ describe('CreditCardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CreditCardComponent]
+      declarations: [CreditCardComponent],
+      imports: [MatDatepickerModule, MatNativeDateModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
     fixture = TestBed.createComponent(CreditCardComponent);
     component = fixture.componentInstance;

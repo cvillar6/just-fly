@@ -9,10 +9,10 @@ import { Flight } from 'src/app/models/flight.model';
 })
 export class CheckoutComponent implements OnInit {
 
-  lastFlight: Flight = JSON.parse(sessionStorage.getItem('flight1') || '');
-  flight: Flight = sessionStorage.getItem('flight2') ? JSON.parse(sessionStorage.getItem('flight2') || '') : undefined;
+  lastFlight: Flight = JSON.parse(sessionStorage.getItem('flight1') || '{}');
+  flight: Flight = sessionStorage.getItem('flight2') ? JSON.parse(sessionStorage.getItem('flight2') || '{}') : undefined;
 
-  passengers: any[] = Object.values(JSON.parse(sessionStorage.getItem('users') || ''));
+  passengers: any[] = Object.values(JSON.parse(sessionStorage.getItem('users') || '{}'));
 
   constructor(
     private router: Router
@@ -25,6 +25,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   finishCheckout(): void {
-    this.router.navigate(['home']);
+    sessionStorage.clear();
+
+    this.router.navigate(['']);
   }
 }

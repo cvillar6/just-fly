@@ -16,7 +16,7 @@ export class UserInformationComponent implements OnInit {
 
   isLoading: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.buildUserForm();
@@ -39,17 +39,12 @@ export class UserInformationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // this.isLoading = true;
+    this.isLoading = true;
 
-    console.log(this.userForm.value);
+    setTimeout(() => {
+      this.router.navigate(['checkout']);
+      sessionStorage.setItem('users', JSON.stringify(this.userForm.value));
+    }, 3000);
 
-    sessionStorage.setItem('users', JSON.stringify(this.userForm.value));
-    
-
-    // setTimeout(() => {
-    //   this.router.navigate(['checkout']);
-    //   sessionStorage.setItem('users', JSON.stringify(this.userForm.value));
-    // }, 3000);
-    
   }
 }
