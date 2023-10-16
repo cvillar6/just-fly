@@ -8,7 +8,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
+      declarations: [HeaderComponent],
     });
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
@@ -16,6 +16,15 @@ describe('HeaderComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should get logo image', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('img')?.getAttribute('src')).toContain(
+      'airplane.png'
+    );
     expect(component).toBeTruthy();
   });
 });

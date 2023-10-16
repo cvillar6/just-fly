@@ -10,7 +10,7 @@ describe('FlightListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      declarations: [FlightListComponent]
+      declarations: [FlightListComponent],
     });
     fixture = TestBed.createComponent(FlightListComponent);
     component = fixture.componentInstance;
@@ -18,6 +18,15 @@ describe('FlightListComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should show loading spinner', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    component.isLoading = true;
+
+    expect(compiled.querySelector('mat-spinner')).toBeDefined();
     expect(component).toBeTruthy();
   });
 });

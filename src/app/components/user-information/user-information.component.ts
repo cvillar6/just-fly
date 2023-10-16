@@ -5,18 +5,17 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-information',
   templateUrl: './user-information.component.html',
-  styleUrls: ['./user-information.component.scss']
+  styleUrls: ['./user-information.component.scss'],
 })
 export class UserInformationComponent implements OnInit {
-
   userForm: FormGroup = new FormGroup({});
-  passengerList: { formControlName: string, description: string }[] = [];
+  passengerList: { formControlName: string; description: string }[] = [];
 
   passengers: number = parseInt(sessionStorage.getItem('passengers') || '1');
 
   isLoading: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.buildUserForm();
@@ -45,6 +44,5 @@ export class UserInformationComponent implements OnInit {
       this.router.navigate(['checkout']);
       sessionStorage.setItem('users', JSON.stringify(this.userForm.value));
     }, 3000);
-
   }
 }

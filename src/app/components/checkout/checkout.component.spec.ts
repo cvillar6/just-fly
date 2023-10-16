@@ -12,7 +12,7 @@ describe('CheckoutComponent', () => {
     TestBed.configureTestingModule({
       declarations: [CheckoutComponent],
       imports: [MatDatepickerModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
     fixture = TestBed.createComponent(CheckoutComponent);
     component = fixture.componentInstance;
@@ -21,5 +21,9 @@ describe('CheckoutComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get empty array from passengers session storage', () => {
+    expect(component.passengers).toEqual([]);
   });
 });

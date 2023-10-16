@@ -23,4 +23,13 @@ describe('CreditCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get cvv input', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('.cvv input')?.getAttribute('placeholder')).toContain(
+      'CVV'
+    );
+    expect(component).toBeTruthy();
+  });
 });

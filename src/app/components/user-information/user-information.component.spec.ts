@@ -12,7 +12,7 @@ describe('UserInformationComponent', () => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
       declarations: [UserInformationComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
     fixture = TestBed.createComponent(UserInformationComponent);
     component = fixture.componentInstance;
@@ -21,5 +21,18 @@ describe('UserInformationComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get default passengers from sessionStorage', () => {
+    const passengersResult: number = component.passengers;
+
+    expect(passengersResult).toBe(1);
+  });
+
+  it('should add one control using addFormControl', () => {
+    component.addFormControl('newForm', 'newFormDescription');
+
+    expect(component.userForm.get('newFormControl')).toBeDefined();
+    expect(component.passengerList.length).toBe(7);
   });
 });
