@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FlightListComponent } from './flight-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('FlightListComponent', () => {
   let component: FlightListComponent;
@@ -8,7 +9,8 @@ describe('FlightListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FlightListComponent]
+      imports: [HttpClientModule],
+      declarations: [FlightListComponent],
     });
     fixture = TestBed.createComponent(FlightListComponent);
     component = fixture.componentInstance;
@@ -16,6 +18,15 @@ describe('FlightListComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should show loading spinner', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    component.isLoading = true;
+
+    expect(compiled.querySelector('mat-spinner')).toBeDefined();
     expect(component).toBeTruthy();
   });
 });

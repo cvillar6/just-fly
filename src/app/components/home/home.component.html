@@ -29,16 +29,18 @@
                 </mat-autocomplete>
             </mat-form-field>
 
-            <mat-form-field class="form-control" *ngIf="getControl('rt').value; else ow">
-                <mat-label>Fecha de ida y de regreso</mat-label>
-                <mat-date-range-input [rangePicker]="rangePicker">
-                    <input matStartDate formControlName="departureDateRange" placeholder="Fecha de ida">
-                    <input matEndDate formControlName="returnDateRange" placeholder="Fecha de regreso">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
-                <mat-date-range-picker #rangePicker></mat-date-range-picker>
+            <ng-template *ngIf="getControl('rt').value; else ow">
+                <mat-form-field class="form-control">
+                    <mat-label>Fecha de ida y de regreso</mat-label>
+                    <mat-date-range-input [rangePicker]="rangePicker">
+                        <input matStartDate formControlName="departureDateRange" placeholder="Fecha de ida">
+                        <input matEndDate formControlName="returnDateRange" placeholder="Fecha de regreso">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #rangePicker></mat-date-range-picker>
+                </mat-form-field>
+            </ng-template>
 
-            </mat-form-field>
 
             <ng-template #ow>
                 <mat-form-field class="form-control">
@@ -53,11 +55,8 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            Cantidad de viajeros
+                            Pasajeros
                         </mat-panel-title>
-                        <mat-panel-description>
-                            0
-                        </mat-panel-description>
                     </mat-expansion-panel-header>
 
                     <mat-form-field class="form-control">
