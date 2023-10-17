@@ -44,7 +44,7 @@ export class UserInformationComponent implements OnInit {
       this.addFormControl(`age-${index}`, 'Edad');
       if (this.flight.visa) {
         this.addFormControl(`visa-${index}`, 'Fecha de vencimiento VISA');
-        this.passengerLimit++;
+        this.passengerLimit = 7;
       }
     }
   }
