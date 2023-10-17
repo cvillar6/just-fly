@@ -12,6 +12,8 @@ Aerolínea de bajo costo donde puedes comprar vuelos nacionales e internacionale
 
 ![Board](./images/board-2.jpeg "Board")
 
+![HU](./images/hu.jpeg "Hu")
+
 ## ¿Cómo funciona?
 
 ![App](./images/app.jpeg "App")
