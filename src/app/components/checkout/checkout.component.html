@@ -1,0 +1,66 @@
+<div class="checkout-container container">
+    <div class="checkout-container-inner">
+        <mat-accordion class="checkout-section" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Vuelos
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Información de tus vuelos
+                        <mat-icon>airplanemode_active</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <app-flight *ngIf="flight" [flight]="flight" [showButton]="false"></app-flight>
+                <app-flight [flight]="lastFlight" [showButton]="false"></app-flight>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion class="checkout-section">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Pasajeros
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Información de los pasajeros
+                        <mat-icon>person</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <ul class="passenger-list">
+                    <li *ngFor="let passenger of passengers; let i = index">
+                        <p *ngIf="i % passengerLimit === 0" class="passenger-label">
+                            Pasajero
+                        </p>
+                        <p>
+                            {{ passenger }}
+                        </p>
+                    </li>
+                </ul>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion class="checkout-section" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Pagar
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Tarjeta de crédito
+                        <mat-icon>credit_card</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <app-credit-card></app-credit-card>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <button class="checkout-button" (click)="finishCheckout()" type="button" mat-raised-button>Confirmar
+            vuelo</button>
+    </div>
+</div>

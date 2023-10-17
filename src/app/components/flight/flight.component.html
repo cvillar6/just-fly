@@ -1,0 +1,48 @@
+<div class="flight-container">
+    <div class="flight-information">
+        <div class="flight-data">
+            <p class="label">Fecha</p>
+            <p class="value">{{flight?.departureDate | date}}</p>
+        </div>
+        <div class="flight-data">
+            <p class="label">Precio</p>
+            <p class="value">{{flight?.price | currency}}</p>
+        </div>
+    </div>
+    <div class="flight-information">
+        <div class="flight-data-container">
+            <div class="flight-data">
+                <p class="label">Lugar de salida</p>
+                <p class="value">{{flight?.origin}}</p>
+            </div>
+            <div class="flight-data">
+                <p class="label">Hora de salida</p>
+                <p class="value">{{flight?.departureHour | date:'shortTime'}}</p>
+            </div>
+        </div>
+        <div class="flight-data-container">
+            <div class="flight-data">
+                <p class="label">Tiempo de vuelo</p>
+                <p class="value">{{flight?.duration}}</p>
+            </div>
+            <div class="flight-data">
+                <p class="value">{{flight?.direct ? 'Directo' : 'Con escala'}}</p>
+            </div>
+        </div>
+        <div class="flight-data-container">
+            <div class="flight-data">
+                <p class="label">Lugar de llegada</p>
+                <p class="value">{{flight?.destination}}</p>
+            </div>
+            <div class="flight-data">
+                <p class="label">Hora de llegada</p>
+                <p class="value">{{flight?.arrivalHour | date:'shortTime'}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="flight-information-actions">
+        <button *ngIf="showButton" (click)="checkFlight(flight)" type="button" mat-raised-button>
+            Quiero este
+        </button>
+    </div>
+</div>

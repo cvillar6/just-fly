@@ -1,0 +1,90 @@
+<div class="home-container container">
+
+    <div *ngIf="!isLoading; else loading" class="form-container">
+        <form class="form" [formGroup]="flightForm" (ngSubmit)="onSubmit()">
+
+            <mat-checkbox class="form-control" formControlName="rt">
+                Ida y regreso
+            </mat-checkbox>
+
+            <mat-form-field class="form-control">
+                <mat-label>Ciudad de origen</mat-label>
+                <input type="text" placeholder="Selecciona el origen" matInput formControlName="origin"
+                    [matAutocomplete]="autoOrigin">
+                <mat-autocomplete autoActiveFirstOption #autoOrigin="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field class="form-control">
+                <mat-label>Ciudad de destino</mat-label>
+                <input type="text" placeholder="Selecciona el destino" matInput formControlName="destination"
+                    [matAutocomplete]="autoDestination">
+                <mat-autocomplete autoActiveFirstOption #autoDestination="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <ng-container *ngIf="getControl('rt').value; else ow">
+                <mat-form-field class="form-control">
+                    <mat-label>Fecha de ida y de regreso</mat-label>
+                    <mat-date-range-input [rangePicker]="rangePicker">
+                        <input matStartDate formControlName="departureDateRange" placeholder="Fecha de ida">
+                        <input matEndDate formControlName="returnDateRange" placeholder="Fecha de regreso">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #rangePicker></mat-date-range-picker>
+                </mat-form-field>
+            </ng-container>
+
+
+            <ng-template #ow>
+                <mat-form-field class="form-control">
+                    <mat-label>Fecha de ida</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="departureDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </ng-template>
+
+            <mat-accordion class="form-control passengers" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Pasajeros
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field class="form-control">
+                        <mat-label>Adultos</mat-label>
+                        <input matInput formControlName="adultPassegers" type="number" min="1">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-control">
+                        <mat-label>Niños</mat-label>
+                        <input matInput formControlName="childPassegers" type="number">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-control">
+                        <mat-label>Bebés</mat-label>
+                        <input matInput formControlName="babyPassengers" type="number">
+                    </mat-form-field>
+
+                </mat-expansion-panel>
+
+            </mat-accordion>
+
+            <button type="submit" [disabled]="!flightForm.valid" mat-raised-button>Volemos</button>
+
+        </form>
+    </div>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+
+</div>

@@ -1,0 +1,54 @@
+@import '../../../assets/styles/variables.scss';
+
+.checkout-container {
+    .checkout-container-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        border-radius: 10px;
+        background-color: $lightPrimaryColor;
+
+        .checkout-section {
+            margin-bottom: 40px;
+
+            .passenger-list {
+                margin: 0;
+                list-style: none;
+
+                .passenger-label {
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                p {
+                    margin: 0 0 10px;
+                }
+            }
+
+            .mat-expansion-panel-header-description {
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            ::ng-deep mat-expansion-panel.mat-expansion-panel {
+                margin-bottom: 40px;
+            }
+
+            ::ng-deep mat-expansion-panel .mat-expansion-panel-body {
+                padding: 16px 24px;
+            }
+
+            ::ng-deep app-flight:first-child .flight-container {
+                margin-bottom: 40px;
+            }
+        }
+
+        .checkout-button {
+            width: 100%;
+            padding: 20px;
+            background-color: $accentColor;
+            color: white;
+            font-size: 18px;
+        }
+    }
+}

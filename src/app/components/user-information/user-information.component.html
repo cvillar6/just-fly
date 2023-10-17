@@ -1,0 +1,22 @@
+<div class="user-information-container container">
+    <div *ngIf="!isLoading; else loading" class="form-container">
+        <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div *ngFor="let passenger of passengerList; let i = index">
+                <p *ngIf="i % passengerLimit === 0">
+                    Pasajero
+                </p>
+
+                <mat-form-field class="form-control">
+                    <mat-label>{{passenger.description}}</mat-label>
+                    <input matInput [formControlName]="passenger.formControlName" [placeholder]="passenger.description">
+                </mat-form-field>
+            </div>
+
+            <button type="submit" [disabled]="!userForm.valid" mat-raised-button>Volemos</button>
+        </form>
+    </div>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+</div>

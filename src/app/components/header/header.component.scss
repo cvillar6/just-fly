@@ -1,0 +1,28 @@
+@import '../../../assets/styles/variables.scss';
+
+header {
+    margin-bottom: 40px;
+    padding: 20px; 
+    display: flex;
+    align-items: center;
+    background-color: $accentColor;
+
+    h1 {
+        display: none;
+    }
+
+    img {
+        width: 80px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    header {
+        h1 {
+            display: inline;
+            margin: 0;
+            color: white;
+        }
+    }
+}

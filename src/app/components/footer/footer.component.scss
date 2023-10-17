@@ -1,0 +1,16 @@
+@import '../../../assets/styles/variables.scss';
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $accentColor;
+
+
+    img {
+        width: 20px;
+        height: auto;
+    }
+}

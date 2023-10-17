@@ -1,0 +1,20 @@
+<div class="flight-list-container container">
+    <div *ngIf="!isLoading; else loading" class="flight-list-inner">
+        <ul *ngIf="flights.length > 0; else emptyFlights" class="flight-list">
+            <li *ngFor="let flight of flights" class="flight-item">
+                <app-flight [flight]="flight" (showReturnFlights)="updateFlights($event)"></app-flight>
+            </li>
+        </ul>
+        <ng-template #emptyFlights>
+            <div class="empty-flights-container">
+                <img [src]="sadAirplaneImage" alt="Sad airplane">
+                <p>No hay vuelos para la búsqueda realizada, inténtalo de nuevo</p>
+            </div>
+
+        </ng-template>
+    </div>
+
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+</div>
