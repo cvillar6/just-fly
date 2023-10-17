@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserInformationComponent } from './user-information.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 describe('UserInformationComponent', () => {
   let component: UserInformationComponent;
@@ -10,8 +12,12 @@ describe('UserInformationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, HttpClientModule, MatDialogModule],
       declarations: [UserInformationComponent],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
     fixture = TestBed.createComponent(UserInformationComponent);

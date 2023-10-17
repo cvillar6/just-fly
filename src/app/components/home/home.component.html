@@ -29,7 +29,7 @@
                 </mat-autocomplete>
             </mat-form-field>
 
-            <ng-template *ngIf="getControl('rt').value; else ow">
+            <ng-container *ngIf="getControl('rt').value; else ow">
                 <mat-form-field class="form-control">
                     <mat-label>Fecha de ida y de regreso</mat-label>
                     <mat-date-range-input [rangePicker]="rangePicker">
@@ -39,7 +39,7 @@
                     <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
                     <mat-date-range-picker #rangePicker></mat-date-range-picker>
                 </mat-form-field>
-            </ng-template>
+            </ng-container>
 
 
             <ng-template #ow>

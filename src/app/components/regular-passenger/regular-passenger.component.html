@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Pasajero frecuente</h1>
+<div mat-dialog-content>
+    <p *ngFor="let passenger of data">
+        El usuario con identificación: {{passenger.id}} tiene un total de {{passenger.currentMiles}} millas y ganará
+        {{passenger.milesReward}} millas por este viaje.
+    </p>
+</div>

@@ -17,6 +17,10 @@ export class CheckoutComponent {
     JSON.parse(sessionStorage.getItem('users') || '{}')
   );
 
+  passengerLimit: number = parseInt(
+    sessionStorage.getItem('passengerLimit') || '6'
+  );
+
   constructor(private router: Router) {}
 
   finishCheckout(): void {
