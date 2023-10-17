@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserInformationComponent } from './components/user-information/user-information.component';
+import { RegularPassengerComponent } from './components/regular-passenger/regular-passenger.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { UserInformationComponent } from './components/user-information/user-inf
     FlightComponent,
     UserInformationComponent,
     CheckoutComponent,
-    CreditCardComponent
+    CreditCardComponent,
+    RegularPassengerComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,9 +54,10 @@ import { UserInformationComponent } from './components/user-information/user-inf
     MatIconModule,
     MatButtonModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   providers: [MatNativeDateModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

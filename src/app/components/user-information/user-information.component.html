@@ -2,7 +2,7 @@
     <div *ngIf="!isLoading; else loading" class="form-container">
         <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
             <div *ngFor="let passenger of passengerList; let i = index">
-                <p *ngIf="i % 6 === 0">
+                <p *ngIf="i % passengerLimit === 0">
                     Pasajero
                 </p>
 

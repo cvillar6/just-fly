@@ -8,6 +8,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -23,6 +25,8 @@ describe('HomeComponent', () => {
         MatCheckboxModule,
         MatInputModule,
         MatAutocompleteModule,
+        MatDatepickerModule,
+        MatNativeDateModule
       ],
       declarations: [HomeComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -42,7 +46,7 @@ describe('HomeComponent', () => {
     expect(formControl.defaultValue).toBeNull();
   });
 
-  it('should execute getControl and get nul', () => {
+  it('should execute getControl and get null', () => {
     const formControl: FormControl = component.getControl('visa');
 
     expect(formControl).toBeNull();

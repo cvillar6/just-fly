@@ -32,7 +32,7 @@
 
                 <ul class="passenger-list">
                     <li *ngFor="let passenger of passengers; let i = index">
-                        <p *ngIf="i % 6 ===0" class="passenger-label">
+                        <p *ngIf="i % passengerLimit === 0" class="passenger-label">
                             Pasajero
                         </p>
                         <p>
@@ -60,7 +60,7 @@
             </mat-expansion-panel>
         </mat-accordion>
 
-        <button class="checkout-button" (click)="finishCheckout()" type="button" mat-raised-button>Confirmar vuelo</button>
-
+        <button class="checkout-button" (click)="finishCheckout()" type="button" mat-raised-button>Confirmar
+            vuelo</button>
     </div>
 </div>
