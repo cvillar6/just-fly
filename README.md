@@ -1,27 +1,57 @@
 # JustFly
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+Aerolínea de bajo costo donde puedes comprar vuelos nacionales e internacionales.
 
-## Development server
+## App
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[Just-fly](https://just-fly-2506a66a617c.herokuapp.com/)
 
-## Code scaffolding
+## Metodología de trabajo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![Board](./images/board-1.jpeg "Board")
 
-## Build
+![Board](./images/board-2.jpeg "Board")
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![HU](./images/hu.jpeg "Hu")
 
-## Running unit tests
+## ¿Cómo funciona?
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![App](./images/app.jpeg "App")
 
-## Running end-to-end tests
+## Modelo de dominio
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Hay tres entidades sobre Just-fly.
 
-## Further help
+1. Vuelo
+2. Pasajero
+3. Pasajero frecuente
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Pasajero tiene una relación directa con pasajero directa, donde se identifican por medio del id del pasajero.
+
+Cada una de las propiedades corresponde a una funcionalidad dictada por negocio.
+
+![Domain model](./images/domain-model.jpeg "Modelo de dominio")
+
+## Proceso de integración
+
+Se usó la metodología de trabajo GitFlow.
+
+![GitFlow](./images/gitflow.jpeg "Git flow")
+
+## Despliegues
+
+![Deployment](./images/deploy-1.jpeg "Deployment")
+
+![Deployment](./images/deploy-2.jpeg "Deployment")
+
+## Tecnologías
+
+La aplicación es un proyecto realizado en Angular donde se desarrollaron componentes, modulos y servicios para el buen funcionamiento del sistema.
+
+La aplicación usa s3, un servicio de AWS para el almacenamiento de datos, en este caso, para guardar imágenes.
+
+El sistema usa Heroku para el despliegue de la aplicación y sirve para el host de este mismo.
+
+Finalmente, se usa mocky para simular las respuestas de un API y poder presentarle al usuario datos de prueba.
+
+
